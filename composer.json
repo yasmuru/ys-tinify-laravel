@@ -1,5 +1,5 @@
 {
-  "name": "yasmuru/ysTinify-laravel",
+  "name": "yasmuru/ys-tinify-laravel",
   "type": "library",
   "description": "Tinify API support with laravel",
   "keywords": ["tinify","tinypng", "laravel"],
