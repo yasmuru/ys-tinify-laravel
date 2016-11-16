@@ -15,11 +15,20 @@ under "providers":
 ```php
         yasmuru\LaravelTinify\LaravelTinifyServiceProvider::class,
 ```
-uder "aliases":
+under "aliases":
 
 ```php
         'Tinify' => yasmuru\LaravelTinify\Facades\Tinify::class
 ```
 
 
-And set a env variable `TINIFY_APIKEY`
+And set a env variable `TINIFY_APIKEY` with your tinypng api key.
+
+If you want to directly upload the image to `aws s3`, you need set the env variables of following with your aws s3 credentials.
+
+```php
+    S3_KEY=
+    S3_SECRET=
+    S3_REGION=
+    S3_BUCKET=
+```
