@@ -20,7 +20,8 @@ class LaravelTinifyServiceProvider extends ServiceProvider {
 	*/
 	public function boot()
 	{	
-		
+		$configPath = __DIR__ . '/../config/tinify.php';
+        $this->publishes([$configPath => config_path('tinify.php')], 'config');
 	}
 
 	/**
@@ -30,7 +31,8 @@ class LaravelTinifyServiceProvider extends ServiceProvider {
 	*/
 	public function register()
 	{
-
+		$configPath = __DIR__ . '/../config/tinify.php';
+        $this->mergeConfigFrom($configPath, 'tinify');
 		$this->app->bind('tinify', 'yasmuru\LaravelTinify\Services\TinifyService');
 
 	}

@@ -13,7 +13,7 @@ class TinifyService {
      * @throws Exception
      */
     public function __construct() {
-        $this->apikey = env('TINIFY_APIKEY');
+        $this->apikey = config('tinify.apikey');
         if(!$this->apikey) {
             throw new \InvalidArgumentException('Please set TINIFY_APIKEY environment variables.');
         }
