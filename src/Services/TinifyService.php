@@ -20,9 +20,9 @@ class TinifyService {
         $this->client = new Tinify();
         $this->client->setKey($this->apikey);
 
-        $this->s3_key = env('S3_KEY');
-        $this->s3_secret = env('S3_SECRET');
-        $this->s3_region = env('S3_REGION');
+        $this->s3_key = config('tinify.s3_key');
+        $this->s3_secret = config('tinify.s3_secret');
+        $this->s3_region = config('tinify.s3_region');
     }
     public function setKey($key) {
         return $this->client->setKey($key);
