@@ -2,6 +2,7 @@
 namespace yasmuru\LaravelTinify\Services;
 
 use Tinify\Source;
+use Tinify\ClientException;
 use Tinify\Tinify;
 
 class TinifyService {
@@ -33,10 +34,12 @@ class TinifyService {
     }
 
     public function getCompressionCount() {
+        $this->validate();
         return $this->client->getCompressionCount();
     }
 
      public function compressionCount() {
+        $this->validate();
         return $this->client->getCompressionCount();
     }
 
