@@ -1,4 +1,10 @@
 vendor/
+composer.lock
+.phpunit.result.cache
+.phpunit.cache
+coverage/
+build/
+.env
 
 ### OSX ###
 *.DS_Store

@@ -1,8 +1,8 @@
 {
   "name": "yasmuru/ys-tinify-laravel",
   "type": "library",
-  "description": "Tinify API support with laravel",
-  "keywords": ["tinify","tinypng", "laravel"],
+  "description": "Tinify API support for Laravel",
+  "keywords": ["tinify", "tinypng", "laravel", "image-compression", "image-optimization"],
   "license": "MIT",
   "authors": [
     {
@@ -11,14 +11,49 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0",
-    "illuminate/support": "~5.2",
-    "tinify/tinify":"*"
+    "php": "^8.2|^8.3|^8.4",
+    "illuminate/support": "^11.0|^12.0|^13.0",
+    "tinify/tinify": "^1.5"
+  },
+  "require-dev": {
+    "larastan/larastan": "^3.0",
+    "orchestra/testbench": "^9.0|^10.0|^11.0",
+    "phpunit/phpunit": "^10.0|^11.0|^12.0"
   },
   "autoload": {
     "psr-4": {
       "yasmuru\\LaravelTinify\\": "src"
     }
   },
-  "minimum-stability": "stable"
+  "autoload-dev": {
+    "psr-4": {
+      "yasmuru\\LaravelTinify\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "yasmuru\\LaravelTinify\\LaravelTinifyServiceProvider"
+      ],
+      "aliases": {
+        "Tinify": "yasmuru\\LaravelTinify\\Facades\\Tinify"
+      }
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+    "analyse": "vendor/bin/phpstan analyse",
+    "check": [
+      "@analyse",
+      "@test"
+    ]
+  },
+  "config": {
+    "sort-packages": true,
+    "preferred-install": "dist",
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
