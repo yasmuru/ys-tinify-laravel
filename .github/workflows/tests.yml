@@ -48,11 +48,18 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Allow install when transitive Laravel versions have open advisories.
+          # CI runs compat tests against the full supported range; consumers can
+          # decide their own policy.
+          composer config --no-plugins policy.advisories.block false
           composer update --with "illuminate/support:${{ matrix.laravel }}" \
             --prefer-stable --prefer-dist --no-interaction --no-progress
 
       - name: Show resolved versions
-        run: composer show illuminate/support orchestra/testbench phpunit/phpunit
+        run: |
+          composer show illuminate/support
+          composer show orchestra/testbench
+          composer show phpunit/phpunit
 
       - name: Execute tests
         run: vendor/bin/phpunit
