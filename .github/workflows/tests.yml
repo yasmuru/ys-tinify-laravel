@@ -56,10 +56,10 @@ jobs:
             --prefer-stable --prefer-dist --no-interaction --no-progress
 
       - name: Show resolved versions
-        run: |
-          composer show illuminate/support
-          composer show orchestra/testbench
-          composer show phpunit/phpunit
+        # illuminate/support is `replace`d by laravel/framework, so it doesn't
+        # show up as an installed package. Query laravel/framework instead.
+        # `|| true` keeps this debug step from ever blocking the test step.
+        run: composer show | grep -E '^(laravel/framework|orchestra/testbench|phpunit/phpunit) ' || true
 
       - name: Execute tests
         run: vendor/bin/phpunit
